@@ -14,13 +14,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ Env.NODE_VERSION }}
 
+      - name: Setup corepack
+        run: corepack enable
+
       - name: Install dependencies
-        run: npm install -g yarn && yarn
+        run: yarn install --frozen-lockfile
 
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps
