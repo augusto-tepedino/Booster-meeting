@@ -1,7 +1,6 @@
 import { type Page, expect } from "@playwright/test"
 
 export function createLoginActions(page: Page) {
-  const signupNavLink = page.getByRole("link", { name: "Signup / Login" })
   const loginEmailInput = page.locator("form")
     .filter({ hasText: "Login" })
     .getByRole("textbox", { name: "email" })
@@ -10,7 +9,6 @@ export function createLoginActions(page: Page) {
 
   return {
     elements: {
-      signupNavLink,
       loginEmailInput,
       loginButton
     },
@@ -31,14 +29,7 @@ export function createLoginActions(page: Page) {
       await expect(heading).toBeVisible()
     },
 
-    async expectSignupNavLinkVisible() {
-      await expect(signupNavLink).toBeVisible()
-    },
 
-    async expectLogoutLinkVisible() {
-      const logoutLink = page.getByRole("link", { name: "Logout" })
-      await expect(logoutLink).toBeVisible()
-    },
 
     async expectInvalidCredentialsError() {
       const invalidCredentialsError = page.getByText("Your email or password is incorrect!")

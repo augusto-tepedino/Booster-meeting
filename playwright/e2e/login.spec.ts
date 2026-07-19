@@ -9,7 +9,7 @@ test.describe("Reach login page", () => {
 
   test("reach login page by link", async ({ page, app }) => {
     await page.goto("/")
-    await app.login.elements.signupNavLink.click()
+    await app.navigation.elements.signupNavLink.click()
     await app.login.expectHeadingVisible()
   })
 })
@@ -30,7 +30,7 @@ test.describe("Validate login", () => {
     const user = { email: "myownuser@google.com", password: "myownuser" }
     await app.login.fillLoginForm(user.email, user.password)
 
-    await app.login.expectLogoutLinkVisible()
+    await app.navigation.expectLogoutLinkVisible()
   })
 
   test("Login with no password", async ({ app }) => {

@@ -9,7 +9,7 @@ test.describe("Reach signup page", () => {
 
   test("reach signup page by link", async ({ page, app }) => {
     await page.goto("/")
-    await app.login.elements.signupNavLink.click()
+    await app.navigation.elements.signupNavLink.click()
     await app.login.expectHeadingVisible()
   })
 })
@@ -17,7 +17,7 @@ test.describe("Reach signup page", () => {
 test.describe("Validate valid signup", () => {
   test.beforeEach(async ({ app }) => {
     await app.login.goto()
-    await app.login.expectSignupNavLinkVisible()
+    await app.navigation.expectSignupNavLinkVisible()
   })
 
   test("User Signup", async ({ app }) => {
@@ -97,7 +97,7 @@ test.describe("Validate signup details form", () => {
 test.describe("Validate Invalid signup", () => {
   test.beforeEach(async ({ app }) => {
     await app.login.goto()
-    await app.login.expectSignupNavLinkVisible()
+    await app.navigation.expectSignupNavLinkVisible()
   })
 
   test("Signup with existing email", async ({ app }) => {
