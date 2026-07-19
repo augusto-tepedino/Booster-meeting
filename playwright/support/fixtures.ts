@@ -3,12 +3,14 @@ import { createLoginActions } from "./actions/loginActions"
 import { createSignupActions } from "./actions/signupActions"
 import { createHomeActions } from "./actions/homeActions"
 import { createNavigationActions } from "./actions/navigationActions"
+import { createProductActions } from "./actions/productActions"
 
 type App = {
   login: ReturnType<typeof createLoginActions>
   signup: ReturnType<typeof createSignupActions>
   home: ReturnType<typeof createHomeActions>
   navigation: ReturnType<typeof createNavigationActions>
+  products: ReturnType<typeof createProductActions>
 }
 
 export const test = base.extend<{ app: App }>({
@@ -18,6 +20,7 @@ export const test = base.extend<{ app: App }>({
       signup: createSignupActions(page),
       home: createHomeActions(page),
       navigation: createNavigationActions(page),
+      products: createProductActions(page),
     }
     await use(app)
   },
